@@ -1,0 +1,6 @@
+node_modules
+.npm/*
+
+src/*
+lib/*
+index.html
