@@ -1,6 +1,6 @@
 {
   "name": "@hayatosc/viewer-ts",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "A Native-ESM PDF viewer",
   "author": "hayatosc",
   "license": "MIT",
@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/vue/index.js",
+      "types": "./dist/vue/index.d.ts"
     }
   },
   "scripts": {
@@ -22,10 +26,12 @@
     "pdfjs-dist": "^4.7.76"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
     "typescript": "^5.4.5",
     "vite": "^5.2.10",
     "vite-plugin-dts": "^4.2.3",
-    "vite-plugin-lib-inject-css": "^2.1.1"
+    "vite-plugin-lib-inject-css": "^2.1.1",
+    "vue": "^3.5.12"
   },
   "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
 }

@@ -1,14 +1,17 @@
+import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
-  plugins: [dts(), libInjectCss()],
+  plugins: [vue(), dts(), libInjectCss()],
   build: {
     lib: {
-      entry: './lib/index.ts',
+      entry: {
+        index: 'lib/main.ts',
+        'vue/index': 'lib/vue/index.ts',
+      },
       name: 'viewer-ts',
-      fileName: 'index',
       formats: ['es'],
     },
   },

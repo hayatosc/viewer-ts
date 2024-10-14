@@ -1,35 +1,36 @@
 import { renderPDF } from './pdf';
 import './style.css';
 
-export interface TurnOptions {
+export interface ViewerOptions {
   display: 'single' | 'double' | 'auto';
   duration: number;
   page: number;
   gradients: boolean;
   turnCorners: Array<'tl' | 'bl' | 'tr' | 'br' | 'l' | 'r'>;
-  when: WhenOption;
+  hooks?: HooksOption;
   type?: 'pdf' | (string & {});
   src?: URL | string;
 }
 
-interface WhenOption {}
+interface HooksOption {
+  onPageUpdate?: (page: number) => void;
+}
 
-const defaultTurnOptions: TurnOptions = {
+const defaultTurnOptions: ViewerOptions = {
   display: 'auto',
   duration: 600,
   page: 1,
   gradients: true,
   turnCorners: ['bl', 'br'],
-  when: undefined as never,
 } as const;
 
 export class Viewer {
   element: HTMLDivElement;
-  options: TurnOptions;
+  options: ViewerOptions;
   _page: number;
   window: Window;
 
-  constructor(element: string | HTMLDivElement, userOptions?: Partial<TurnOptions>) {
+  constructor(element: string | HTMLDivElement, userOptions?: Partial<ViewerOptions>) {
     this.element = typeof element === 'string' ? findSelector(element) : element;
     this.options = { ...defaultTurnOptions, ...userOptions };
     this._page = this.options.page || 1;
@@ -64,6 +65,9 @@ export class Viewer {
     }
     this.element.querySelector('.viewer_ts__page__active')?.classList.remove('viewer_ts__page__active');
     this.element.querySelector(`.viewer_ts__page:nth-child(${this._page})`)?.classList.add('viewer_ts__page__active');
+    if (this.options.hooks?.onPageUpdate) {
+      this.options.hooks.onPageUpdate(this._page);
+    }
   }
 
   next() {
