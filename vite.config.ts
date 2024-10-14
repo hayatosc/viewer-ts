@@ -14,5 +14,8 @@ export default defineConfig({
       name: 'viewer-ts',
       formats: ['es'],
     },
+    rollupOptions: {
+      external: ['vue'],
+    },
   },
 });
