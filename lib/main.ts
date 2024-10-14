@@ -1,4 +1,3 @@
-import { renderPDF } from './pdf';
 import './style.css';
 
 export interface ViewerOptions {
@@ -44,6 +43,7 @@ export class Viewer {
     if (this.options.type === 'pdf') {
       if (this.options.src) {
         try {
+          const { renderPDF } = await import('./pdf');
           await renderPDF(this.options.src, this.element, this._page);
         } catch (error) {
           console.error('Error occurred in PDF', error);
