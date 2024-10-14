@@ -1,6 +1,6 @@
 {
   "name": "@hayatosc/viewer-ts",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "A Native-ESM PDF viewer",
   "author": "hayatosc",
   "license": "MIT",
