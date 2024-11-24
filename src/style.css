@@ -1,0 +1,22 @@
+@import url('https://unpkg.com/sanitize.css');
+
+#app {
+    width: 100dvw;
+    height: 100dvh;
+    padding-block: 1rem;
+}
+
+#turn {
+    height: 90%;
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+}
+
+#previous,
+#next {
+    width: 168px;
+    height: 80px;
+}
